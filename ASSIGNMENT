@@ -1,0 +1,66 @@
+using System;
+
+class Shelf
+{
+    public string[] Books;
+    public string[] Authors;
+    public string ShelfGenre;
+
+    public Shelf(string[] books, string[] authors, string genre)
+    {
+        Books = books;
+        Authors = authors;
+        ShelfGenre = genre;
+    }
+
+    public void Details()
+    {
+        Console.WriteLine($"\nGenre: {ShelfGenre}");
+        for (int i = 0; i < Books.Length; i++)
+        {
+            Console.WriteLine($"Author: {Authors[i]} - Book: {Books[i]}");
+        }
+    }
+}
+
+class Library
+{
+    public List<Shelf> Shelves = new List<Shelf>();
+
+    public void AddShelf(Shelf shelf)
+    {
+        Shelves.Add(shelf);
+    }
+
+    public void ShowLibraryDetails()
+    {
+        foreach (var shelf in Shelves)
+        {
+            shelf.Details();
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Create Thriller Shelf
+        string[] thrillerBooks = { "The Da Vinci Code", "Gone Girl", "The Girl with the Dragon Tattoo" };
+        string[] thrillerAuthors = { "Dan Brown", "Gillian Flynn", "Stieg Larsson" };
+        Shelf thrillerShelf = new Shelf(thrillerBooks, thrillerAuthors, "Thriller");
+
+        // Create Fantasy Shelf
+        string[] fantasyBooks = { "Harry Potter", "The Hobbit", "The Name of the Wind" };
+        string[] fantasyAuthors = { "J.K. Rowling", "J.R.R. Tolkien", "Patrick Rothfuss" };
+        Shelf fantasyShelf = new Shelf(fantasyBooks, fantasyAuthors, "Fantasy");
+
+        // Create Library and add shelves
+        Library library = new Library();
+        library.AddShelf(thrillerShelf);
+        library.AddShelf(fantasyShelf);
+
+        // Display all shelf details
+        library.ShowLibraryDetails();
+    }
+}
