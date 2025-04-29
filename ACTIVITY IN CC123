@@ -1,0 +1,50 @@
+using System;
+
+class Shelf
+{
+    public string Book;
+    public string Author;
+
+    public Shelf(string book, string author)
+    {
+        Book = book;
+        Author = author;
+    }
+
+    public void Details(string genre)
+    {
+        Console.WriteLine($"{genre} Shelf");
+        Console.WriteLine($"Book: {Book}, Author: {Author}\n");
+    }
+}
+
+class Library
+{
+    public Shelf horror;
+    public Shelf thriller;
+    public Shelf romance;
+
+    public Library()
+    {
+        horror = new Shelf("IT", "Stephen King");
+        thriller = new Shelf("Gone Girl", "Gillian Flynn");
+        romance = new Shelf("The Notebook", "Nicholas Sparks");
+    }
+
+    public void ShowLibrary()
+    {
+        horror.Details("Horror");
+        thriller.Details("Thriller");
+        romance.Details("Romance");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Library myLibrary = new Library();
+        myLibrary.ShowLibrary();
+    }
+}
+
